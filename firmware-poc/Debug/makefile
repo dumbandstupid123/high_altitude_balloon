@@ -132,7 +132,8 @@ EXE_OUTPUTS__QUOTED += \
 
 
 # All Target
-all: firmware-poc.out
+all: $(OBJS) $(GEN_CMDS)
+	@$(MAKE) --no-print-directory -Onone "firmware-poc.out"
 
 # Tool invocations
 firmware-poc.out: $(OBJS) $(GEN_CMDS)

@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "hab_bme680.h"
 #include "hab_lora_sx1276.h"
 #include "hab_sd_fatfs.h"
 #include "hab_types.h"
@@ -12,18 +11,29 @@
 #include "poc_platform.h"
 #include "ti_msp_dl_config.h"
 
+#if POC_ENABLE_BME680
+#include "hab_bme680.h"
+#endif
+
+#if POC_ENABLE_BME680
 static hab_bme680_t g_bme680;
+#endif
 static hab_sx1276_t g_lora;
 static hab_sd_fatfs_t g_sd;
 
+#if POC_ENABLE_BME680
 static bool g_bme680_ready = false;
+#endif
 static bool g_lora_ready = false;
 static bool g_sd_ready = false;
+#if POC_ENABLE_BME680
 static uint8_t g_bme680_address = 0u;
+#endif
 static uint32_t g_uptime_ms = 0u;
 static uint32_t g_lora_sequence = 0u;
 static uint32_t g_sd_sequence = 0u;
 
+#if POC_ENABLE_BME680
 static int8_t poc_bme_i2c_read(void *context,
                                uint8_t dev_addr,
                                uint8_t reg_addr,
@@ -49,6 +59,7 @@ static void poc_bme_delay_us(void *context, uint32_t delay_us)
     (void)context;
     poc_delay_us(delay_us);
 }
+#endif
 
 static bool poc_lora_spi_transfer(void *context,
                                   const uint8_t *tx_data,
@@ -95,9 +106,11 @@ static void poc_run_i2c_scan(void)
             poc_uart_printf("I2C found address 0x%02X", address);
             found_any = true;
 
+#if POC_ENABLE_BME680
             if (address == POC_BME680_ADDR_PRIMARY || address == POC_BME680_ADDR_SECONDARY) {
                 g_bme680_address = address;
             }
+#endif
         }
     }
 
@@ -108,6 +121,7 @@ static void poc_run_i2c_scan(void)
     }
 }
 
+#if POC_ENABLE_BME680
 static void poc_init_bme680(void)
 {
     hab_bme680_bus_t bus = {0};
@@ -158,6 +172,7 @@ static void poc_sample_bme680(void)
         (double)env.humidity_percent,
         (double)env.pressure_pa);
 }
+#endif
 
 static void poc_init_lora(void)
 {

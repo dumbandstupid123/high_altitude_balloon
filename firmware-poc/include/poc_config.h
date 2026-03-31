@@ -14,7 +14,7 @@
 #define POC_I2C_SCAN_PERIOD_MS     10000U
 
 #define POC_ENABLE_I2C_SCAN        1
-#define POC_ENABLE_BME680          1
+#define POC_ENABLE_BME680          0
 #define POC_ENABLE_LORA            1
 #define POC_ENABLE_SD              1
 

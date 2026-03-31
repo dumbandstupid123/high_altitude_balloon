@@ -3,7 +3,7 @@
    <banner>TI ARM Clang Linker Unix v4.0.4.LTS</banner>
    <copyright>Copyright (c) 1996-2018 Texas Instruments Incorporated</copyright>
    <command_line>/Applications/ti/ccs2040/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/bin/tiarmlnk -I/Applications/ti/ccs2040/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib -o hab-v2.out -mhab-v2.map -i/Users/zanehensley/ti/mspm0_sdk_2_10_00_04/source -i/Users/zanehensley/code/classes/classelec327/high_altitude_balloon/firmware -i/Users/zanehensley/code/classes/classelec327/high_altitude_balloon/firmware/Debug/syscfg -i/Applications/ti/ccs2040/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib --diag_wrap=off --display_error_number --warn_sections --xml_link_info=hab-v2_linkInfo.xml --rom_model ./empty.o ./ti_msp_dl_config.o ./startup_mspm0g350x_ticlang.o ./src/hab_app.o ./src/hab_bme680.o ./src/hab_gps.o ./src/hab_lora_sx1276.o ./src/hab_math.o ./src/hab_protocol.o ./src/hab_sd_fatfs.o ./src/main.o ./src/platform_stub.o ./src/platform/diskio_mspm0.o ./src/platform/platform_mspm0_ccs.o ./third_party/bme68x/bme68x.o ./third_party/fatfs/source/ff.o ./third_party/fatfs/source/ffsystem.o ./third_party/fatfs/source/ffunicode.o -l./device_linker.cmd -ldevice.cmd.genlibs -llibc.a --start-group -llibc++.a -llibc++abi.a -llibc.a -llibsys.a -llibsysbm.a -llibclang_rt.builtins.a -llibclang_rt.profile.a --end-group --cg_opt_level=2</command_line>
-   <link_time>0x69cbf937</link_time>
+   <link_time>0x69cc1dcd</link_time>
    <link_errors>0x0</link_errors>
    <output_file>/Users/zanehensley/code/classes/classelec327/high_altitude_balloon/firmware/Debug/hab-v2.out</output_file>
    <entry_point>
@@ -7378,7 +7378,7 @@
          <caller_list>
             <trampoline_call_site>
                <caller_address>0xc07e</caller_address>
-               <caller_object_component_ref idref="oc-2a6-40dba4dbdd3a00ec"/>
+               <caller_object_component_ref idref="oc-2a6-7feb60b8875b005b"/>
             </trampoline_call_site>
          </caller_list>
       </far_call_trampoline>
@@ -7390,7 +7390,7 @@
          <caller_list>
             <trampoline_call_site>
                <caller_address>0xc0be</caller_address>
-               <caller_object_component_ref idref="oc-173-40dba4dbdd3a00ec"/>
+               <caller_object_component_ref idref="oc-173-7feb60b8875b005b"/>
             </trampoline_call_site>
          </caller_list>
       </far_call_trampoline>
@@ -7402,15 +7402,15 @@
          <caller_list>
             <trampoline_call_site>
                <caller_address>0xc0f4</caller_address>
-               <caller_object_component_ref idref="oc-235-40dba4dbdd3a00ec"/>
+               <caller_object_component_ref idref="oc-235-7feb60b8875b005b"/>
             </trampoline_call_site>
             <trampoline_call_site>
                <caller_address>0xc150</caller_address>
-               <caller_object_component_ref idref="oc-234-40dba4dbdd3a00ec"/>
+               <caller_object_component_ref idref="oc-234-7feb60b8875b005b"/>
             </trampoline_call_site>
             <trampoline_call_site>
                <caller_address>0xc158</caller_address>
-               <caller_object_component_ref idref="oc-239-40dba4dbdd3a00ec"/>
+               <caller_object_component_ref idref="oc-239-7feb60b8875b005b"/>
             </trampoline_call_site>
          </caller_list>
       </far_call_trampoline>
@@ -7422,15 +7422,15 @@
          <caller_list>
             <trampoline_call_site>
                <caller_address>0xc10c</caller_address>
-               <caller_object_component_ref idref="oc-236-40dba4dbdd3a00ec"/>
+               <caller_object_component_ref idref="oc-236-7feb60b8875b005b"/>
             </trampoline_call_site>
             <trampoline_call_site>
                <caller_address>0xc154</caller_address>
-               <caller_object_component_ref idref="oc-22f-40dba4dbdd3a00ec"/>
+               <caller_object_component_ref idref="oc-22f-7feb60b8875b005b"/>
             </trampoline_call_site>
             <trampoline_call_site>
                <caller_address>0xc15c</caller_address>
-               <caller_object_component_ref idref="oc-23f-40dba4dbdd3a00ec"/>
+               <caller_object_component_ref idref="oc-23f-7feb60b8875b005b"/>
             </trampoline_call_site>
          </caller_list>
       </far_call_trampoline>
@@ -7442,15 +7442,15 @@
          <caller_list>
             <trampoline_call_site>
                <caller_address>0xc124</caller_address>
-               <caller_object_component_ref idref="oc-237-40dba4dbdd3a00ec"/>
+               <caller_object_component_ref idref="oc-237-7feb60b8875b005b"/>
             </trampoline_call_site>
             <trampoline_call_site>
                <caller_address>0xc13c</caller_address>
-               <caller_object_component_ref idref="oc-238-40dba4dbdd3a00ec"/>
+               <caller_object_component_ref idref="oc-238-7feb60b8875b005b"/>
             </trampoline_call_site>
             <trampoline_call_site>
                <caller_address>0xc142</caller_address>
-               <caller_object_component_ref idref="oc-23a-40dba4dbdd3a00ec"/>
+               <caller_object_component_ref idref="oc-23a-7feb60b8875b005b"/>
             </trampoline_call_site>
          </caller_list>
       </far_call_trampoline>
