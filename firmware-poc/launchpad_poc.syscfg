@@ -1,0 +1,68 @@
+/**
+ * LaunchPad proof-of-concept configuration for the LP-MSPM0G3507.
+ * This keeps the PoC on validated LaunchPad peripheral pins instead of the
+ * custom board's software I2C/SPI workarounds.
+ */
+//@cliArgs --device "MSPM0G350X" --package "LQFP-64(PM)" --part "Default"
+//@v2CliArgs --device "MSPM0G3507" --package "LQFP-64(PM)"
+// @cliArgs --board /ti/boards/LP_MSPM0G3507 --rtos nortos
+
+const GPIO = scripting.addModule("/ti/driverlib/GPIO", {}, false);
+const GPIO_LORA = GPIO.addInstance();
+const GPIO_SD = GPIO.addInstance();
+const I2C = scripting.addModule("/ti/driverlib/I2C", {}, false);
+const I2C1 = I2C.addInstance();
+const SPI = scripting.addModule("/ti/driverlib/SPI", {}, false);
+const SPI1 = SPI.addInstance();
+const SYSCTL = scripting.addModule("/ti/driverlib/SYSCTL", {}, false);
+const UART = scripting.addModule("/ti/driverlib/UART", {}, false);
+const UART0 = UART.addInstance();
+const Board = scripting.addModule("/ti/driverlib/Board", {}, false);
+
+Board.configureUnused = true;
+SYSCTL.clockTreeEn = true;
+SYSCTL.forceDefaultClkConfig = true;
+
+UART0.$name = "UART_DEBUG";
+UART0.peripheral.$assign = "UART0";
+UART0.peripheral.txPin.$assign = "PA10";
+UART0.peripheral.rxPin.$assign = "PA11";
+UART0.targetBaudRate = 115200;
+UART0.enableDMARX = false;
+UART0.enableDMATX = false;
+
+I2C1.$name = "I2C_ENV";
+I2C1.peripheral.$assign = "I2C1";
+I2C1.peripheral.sdaPin.$assign = "PB3";
+I2C1.peripheral.sclPin.$assign = "PB2";
+I2C1.basicEnableController = true;
+I2C1.advAnalogGlitchFilter = "DISABLED";
+I2C1.sdaPinConfig.enableConfig = true;
+I2C1.sdaPinConfig.internalResistor = "PULL_UP";
+I2C1.sclPinConfig.enableConfig = true;
+I2C1.sclPinConfig.internalResistor = "PULL_UP";
+
+SPI1.$name = "SPI_SHARED";
+SPI1.peripheral.$assign = "SPI1";
+SPI1.peripheral.sclkPin.$assign = "PB9";
+SPI1.peripheral.mosiPin.$assign = "PB8";
+SPI1.peripheral.misoPin.$assign = "PB7";
+SPI1.targetBitRate = 500000;
+
+GPIO_LORA.$name = "GPIO_LORA";
+GPIO_LORA.associatedPins.create(3);
+GPIO_LORA.associatedPins[0].$name = "LORA_CS";
+GPIO_LORA.associatedPins[0].pin.$assign = "PB6";
+GPIO_LORA.associatedPins[0].initialValue = "SET";
+GPIO_LORA.associatedPins[1].$name = "LORA_RST";
+GPIO_LORA.associatedPins[1].pin.$assign = "PB0";
+GPIO_LORA.associatedPins[1].initialValue = "SET";
+GPIO_LORA.associatedPins[2].$name = "LORA_DIO0";
+GPIO_LORA.associatedPins[2].pin.$assign = "PB15";
+GPIO_LORA.associatedPins[2].direction = "INPUT";
+
+GPIO_SD.$name = "GPIO_SD";
+GPIO_SD.associatedPins.create(1);
+GPIO_SD.associatedPins[0].$name = "SD_CS";
+GPIO_SD.associatedPins[0].pin.$assign = "PB17";
+GPIO_SD.associatedPins[0].initialValue = "SET";
