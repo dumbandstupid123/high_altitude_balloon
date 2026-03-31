@@ -1,0 +1,15 @@
+"./ti_msp_dl_config.o"
+"./startup_mspm0g350x_ticlang.o"
+"./src/main.o"
+"./src/poc_diskio_mspm0.o"
+"./src/poc_platform.o"
+"./src/reuse_bme68x.o"
+"./src/reuse_ff.o"
+"./src/reuse_ffsystem.o"
+"./src/reuse_ffunicode.o"
+"./src/reuse_hab_bme680.o"
+"./src/reuse_hab_lora_sx1276.o"
+"./src/reuse_hab_sd_fatfs.o"
+-l"./device_linker.cmd"
+-ldevice.cmd.genlibs
+-llibc.a
