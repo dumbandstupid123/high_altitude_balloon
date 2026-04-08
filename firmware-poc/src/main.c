@@ -274,21 +274,25 @@ int main(void)
     poc_platform_init();
 
     poc_uart_write_line("HAB LaunchPad firmware PoC");
-    poc_uart_write_line("Testing I2C, LoRa, and microSD before PCB integration");
+    poc_uart_printf("Active test mode: %s", POC_TEST_MODE_NAME);
 
 #if POC_ENABLE_I2C_SCAN
+    poc_uart_write_line("I2C scan enabled");
     poc_run_i2c_scan();
 #endif
 
 #if POC_ENABLE_BME680
+    poc_uart_write_line("BME680 test enabled");
     poc_init_bme680();
 #endif
 
 #if POC_ENABLE_LORA
+    poc_uart_write_line("LoRa test enabled");
     poc_init_lora();
 #endif
 
 #if POC_ENABLE_SD
+    poc_uart_write_line("microSD test enabled");
     poc_init_sd();
 #endif
 

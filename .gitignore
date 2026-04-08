@@ -5,3 +5,5 @@
 *-backups/
 fp-info-cache
 _autosave*
+Debug/
+/**/.theia/
