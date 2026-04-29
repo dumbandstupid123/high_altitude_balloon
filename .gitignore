@@ -1,0 +1,9 @@
+.DS_Store
+*.lck
+*.bak
+*.000
+*-backups/
+fp-info-cache
+_autosave*
+Debug/
+/**/.theia/

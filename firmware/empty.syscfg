@@ -1,0 +1,103 @@
+/**
+ * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
+ * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
+ */
+//@cliArgs --device "MSPM0G350X" --package "LQFP-64(PM)" --part "Default"
+//@v2CliArgs --device "MSPM0G3507" --package "LQFP-64(PM)"
+
+const GPIO = scripting.addModule("/ti/driverlib/GPIO", {}, false);
+const GPIO1 = GPIO.addInstance();
+const GPIO2 = GPIO.addInstance();
+const SYSCTL = system.modules["/ti/driverlib/SYSCTL"].$static;
+const TIMER = scripting.addModule("/ti/driverlib/TIMER", {}, false);
+const TIMER1 = TIMER.addInstance();
+const UART = scripting.addModule("/ti/driverlib/UART", {}, false);
+const UART1 = UART.addInstance();
+const Board = scripting.addModule("/ti/driverlib/Board", {}, false);
+
+Board.configureUnused = true;
+
+SYSCTL.clockTreeEn = true;
+SYSCTL.forceDefaultClkConfig = true;
+
+UART1.$name = "UART_DEBUG";
+UART1.profile = "CONFIG_PROFILE_1";
+UART1.peripheral.$assign = "UART1";
+UART1.peripheral.txPin.$assign = "PA8";
+UART1.peripheral.rxPin.$assign = "PA9";
+UART1.targetBaudRate = 115200;
+UART1.enableDMARX = false;
+UART1.enableDMATX = false;
+
+TIMER1.$name = "TIMER_SCHED";
+TIMER1.timerMode = "PERIODIC";
+TIMER1.timerClkDiv = 8;
+TIMER1.timerClkPrescale = 128;
+TIMER1.timerPeriod = "1 s";
+TIMER1.interrupts = ["ZERO"];
+TIMER1.peripheral.$assign = "TIMG0";
+TIMER1.timerStartTimer = false;
+
+GPIO1.$name = "GPIO_LORA";
+GPIO1.associatedPins.create(3);
+GPIO1.associatedPins[0].$name = "LORA_CS";
+GPIO1.associatedPins[0].assignedPort = "PORTA";
+GPIO1.associatedPins[0].assignedPin = "14";
+GPIO1.associatedPins[0].initialValue = "SET";
+GPIO1.associatedPins[0].pin.$assign = "PA14";
+GPIO1.associatedPins[1].$name = "LORA_IRQ";
+GPIO1.associatedPins[1].assignedPort = "PORTA";
+GPIO1.associatedPins[1].assignedPin = "15";
+GPIO1.associatedPins[1].direction = "INPUT";
+GPIO1.associatedPins[1].pin.$assign = "PA15";
+GPIO1.associatedPins[2].$name = "LORA_RST";
+GPIO1.associatedPins[2].assignedPort = "PORTA";
+GPIO1.associatedPins[2].assignedPin = "16";
+GPIO1.associatedPins[2].initialValue = "SET";
+GPIO1.associatedPins[2].pin.$assign = "PA16";
+
+GPIO2.$name = "GPIO_AUX";
+GPIO2.associatedPins.create(8);
+GPIO2.associatedPins[0].$name = "SD_CS";
+GPIO2.associatedPins[0].assignedPort = "PORTA";
+GPIO2.associatedPins[0].assignedPin = "17";
+GPIO2.associatedPins[0].initialValue = "SET";
+GPIO2.associatedPins[0].pin.$assign = "PA17";
+GPIO2.associatedPins[1].$name = "BME680_SDA";
+GPIO2.associatedPins[1].assignedPort = "PORTB";
+GPIO2.associatedPins[1].assignedPin = "2";
+GPIO2.associatedPins[1].direction = "INPUT";
+GPIO2.associatedPins[1].pin.$assign = "PB2";
+GPIO2.associatedPins[2].$name = "BME680_SCL";
+GPIO2.associatedPins[2].assignedPort = "PORTB";
+GPIO2.associatedPins[2].assignedPin = "3";
+GPIO2.associatedPins[2].direction = "INPUT";
+GPIO2.associatedPins[2].pin.$assign = "PB3";
+GPIO2.associatedPins[3].$name = "SPI_CLK_SOFT";
+GPIO2.associatedPins[3].assignedPort = "PORTA";
+GPIO2.associatedPins[3].assignedPin = "11";
+GPIO2.associatedPins[3].initialValue = "CLEARED";
+GPIO2.associatedPins[3].pin.$assign = "PA11";
+GPIO2.associatedPins[4].$name = "SPI_MOSI_SOFT";
+GPIO2.associatedPins[4].assignedPort = "PORTA";
+GPIO2.associatedPins[4].assignedPin = "12";
+GPIO2.associatedPins[4].initialValue = "CLEARED";
+GPIO2.associatedPins[4].pin.$assign = "PA12";
+GPIO2.associatedPins[5].$name = "SPI_MISO_SOFT";
+GPIO2.associatedPins[5].assignedPort = "PORTA";
+GPIO2.associatedPins[5].assignedPin = "13";
+GPIO2.associatedPins[5].direction = "INPUT";
+GPIO2.associatedPins[5].pin.$assign = "PA13";
+GPIO2.associatedPins[6].$name = "GPS_RX_SOFT";
+GPIO2.associatedPins[6].assignedPort = "PORTA";
+GPIO2.associatedPins[6].assignedPin = "10";
+GPIO2.associatedPins[6].direction = "INPUT";
+GPIO2.associatedPins[6].interruptEn = true;
+GPIO2.associatedPins[6].polarity = "FALL";
+GPIO2.associatedPins[6].inputFilter = "3_CYCLES";
+GPIO2.associatedPins[6].pin.$assign = "PA10";
+GPIO2.associatedPins[7].$name = "GPS_TX_UNUSED";
+GPIO2.associatedPins[7].assignedPort = "PORTA";
+GPIO2.associatedPins[7].assignedPin = "26";
+GPIO2.associatedPins[7].initialValue = "SET";
+GPIO2.associatedPins[7].pin.$assign = "PA26";
